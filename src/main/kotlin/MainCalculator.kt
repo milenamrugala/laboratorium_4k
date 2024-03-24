@@ -82,7 +82,7 @@ fun main() {
             val number = reader.nextDouble()
             try {
                 println("Result: ${square(number)}") //ok
-            } catch (e: java.lang.ArithmeticException) {
+            } catch (e: ArithmeticException) {
                 println("Error: ${e.message}")
             }
         }

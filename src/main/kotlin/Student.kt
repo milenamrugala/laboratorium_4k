@@ -1,11 +1,16 @@
 class Student(
     private var firstName: String,
     private var lastName: String,
-    private var id: String
+    private var id: String,
+    private var grade: Int
 ) {
 
     override fun toString(): String {
-        return "Student(firstName='$firstName', lastName='$lastName', id='$id')"
+        return "imię: $firstName, nazwisko: $lastName, numer indeksu: $id, ocena: $grade"
+    }
+
+    fun getGrade(): Int {
+        return grade
     }
 
     fun getFirstName(): String {
@@ -19,6 +24,11 @@ class Student(
     fun getId(): String {
         return id
     }
+
+    fun setGrade(grade: Int) {
+        this.grade = grade
+    }
+
 
     fun setFirstName(firstName: String) {
         this.firstName = firstName

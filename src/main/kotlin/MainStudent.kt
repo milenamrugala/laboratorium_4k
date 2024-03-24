@@ -1,41 +1,40 @@
+import java.lang.IllegalArgumentException
+
 fun main() {
 
-    fun showStudent(students: List<Student>) {
-        for (student in students) {
-            println(student)
-        }
+    val group = Group()
+
+    val first = Student("Milena", "Mrugała", "51251", 7) // ok, nie wchodzi do avg
+    val second = Student("Monika", "Mrugała", "45845", 4)
+    val third = Student("Adam", "Mrugała", "67467", 3)
+    val fourth = Student("Henryk", "Fik", "12312", 4)
+    val fifth = Student("Maria", "Fik", "12312", 5) // ok, nie wchodzi do avg
+    val sixth = Student("Katarzyna", "Starzyńska", "43534", 4)
+
+    try {
+        group.add(first)
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
     }
 
-    val students: List<Student> = listOf(
-        Student("Milena", "Mrugała", "51251"),
-        Student("Monika", "Fik", "41341"),
-        Student("Adam", "Malinowski", "71571"),
-        Student("Anna", "Lewandowska", "90890"),
-        Student("Barbara", "Starzyńska", "45645")
-    )
+    group.add(second)
+    group.add(third)
+    group.add(fourth)
+    group.add(sixth)
 
-    showStudent(students)
-    println()
-    // students.add(Student("Henryk", "Fik", "12431")) - dodanie nowego studenta niemożliwe
-    // students.removeAt(0) - - usunięcie studenta niemożliwe
+    try {
+        group.add(fifth)
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
+    }
 
+    println("Average grade is ${group.avg()} of ${group.number()} students.")
 
-    val secondStudents: MutableList<Student> = mutableListOf(
-        Student("Milena", "Mrugała", "51251"),
-        Student("Monika", "Fik", "41341"),
-        Student("Adam", "Malinowski", "71571"),
-        Student("Anna", "Lewandowska", "90890"),
-        Student("Barbara", "Starzyńska", "45645")
-    )
+    println(first)
+    println(second)
 
-    showStudent(secondStudents)
-    println()
-    secondStudents.add(Student("Henryk", "Fik", "12431"))
-    secondStudents.removeAt(0)
-    showStudent(secondStudents)
 
 }
-
 
 
 
